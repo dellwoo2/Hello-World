@@ -16,7 +16,7 @@ limitations under the License.
 
 package main
 
-var count int
+
 import (
 	"errors"
 	"fmt"
@@ -27,6 +27,8 @@ import (
 // SimpleChaincode example simple Chaincode implementation
 type SimpleChaincode struct {
 }
+
+var count int
 
 func main() {
 	err := shim.Start(new(SimpleChaincode))
