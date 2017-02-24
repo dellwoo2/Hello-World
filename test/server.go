@@ -3,10 +3,11 @@ package main
  
  import ( 
 	"fmt"
+	"io/ioutil"
  //	"errors" 
 	"vpms" 
-	"log" 
- 	"net" 
+//	"log" 
+// 	"net" 
  	"net/http" 
 	"net/rpc" 
   	"shared" //Path to the package contains shared struct 
@@ -88,17 +89,21 @@ package main
  
  	// registers an HTTP handler for RPC messages on rpcPath, and a debugging handler on debugPath 
  	server.HandleHTTP("/", "/debug") 
- 
- 
+	resp, _ := http.Get("http://www.bbc.com")
+  	bodyBytes, _ := ioutil.ReadAll(resp.Body)
+	bodyString := string(bodyBytes[0:60])
+	fmt.Println(bodyString)
+//bodyString = string(bodyBytes)	valAsbytes:=[]byte(*resp)
+        //fmt.Println(resp)
  	// Listen for incoming tcp packets on specified port. 
- 	l, e := net.Listen("tcp", ":1234") 
- 	if e != nil { 
- 		log.Fatal("listen error:", e) 
- 	} 
+ 	//l, e := net.Listen("tcp", ":1234") 
+ 	//if e != nil { 
+ 	//	log.Fatal("listen error:", e) 
+ 	//} 
  
-        fmt.Println("starting")
+   //     fmt.Println("starting")
  	// This statement starts go's http server on 
  	// socket specified by l. 
- 	http.Serve(l, nil) 
+ //	http.Serve(l, nil) 
  } 
 

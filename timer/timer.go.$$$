@@ -18,19 +18,21 @@ package main
 
 
 import (
+	"io/ioutil"
 	"errors"
 	"fmt"
         "time"
-	"strconv"
+//	"strconv"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
-)
-
+	"github.com/dellwoo2/Hello-World/shared"
+ 	"net/http" 
+)	
 // SimpleChaincode example simple Chaincode implementation
 type SimpleChaincode struct {
 }
 
 var count int
-
+var   xx = shared.Args{1, 2}
 func main() {
 	err := shim.Start(new(SimpleChaincode))
 	if err != nil {
@@ -44,18 +46,20 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 		return nil, errors.New("Incorrect number of arguments. Expecting 1")
 	}
         count=0;
-	err := stub.PutState("hello_world", []byte(args[0]))
+ 	//xx = &shared.Args{1, 2} 
+	err := stub.PutState("hello_world", []byte("Hi") )
+        //fmt.Println( xx.A )
+
 	if err != nil {
 		return nil, err
 	}
-
 	return nil, nil
 }
 
 // Invoke isur entry point to invoke a chaincode function
 func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 	fmt.Println("invoke is running " + function)
-
+        //xx = shared.Args{1, 2} 
 	// Handle different functions
 	if function == "init" {
 		return t.Init(stub, "init", args)
@@ -114,9 +118,12 @@ func (t *SimpleChaincode) read(stub shim.ChaincodeStubInterface, args []string) 
 
 	//key = args[0]
 	//valAsbytes, err := stub.GetState(key)
-	x:=int64(count)
-        str1:=strconv.FormatInt(x,10)
-	valAsbytes:=[]byte(str1)
+//	x:=int64(count)
+//        str1:=strconv.FormatInt(x,10)
+//	valAsbytes:=[]byte(str1)
+	resp, _ := http.Get("http://www.bbc.com")
+  	bb, _ := ioutil.ReadAll(resp.Body)
+	valAsbytes:=bb[0:50]
 	//if err != nil {
 	//	jsonResp = "{\"Error\":\"Failed to get state for " + key + "\"}"
 	//	return nil, errors.New(jsonResp)

@@ -24,7 +24,7 @@ import (
         "time"
 //	"strconv"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"github.com/dellwoo2/Hello-World/shared"
+	"shared"
  	"net/http" 
 )	
 // SimpleChaincode example simple Chaincode implementation
