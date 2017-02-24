@@ -46,9 +46,9 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 		return nil, errors.New("Incorrect number of arguments. Expecting 1")
 	}
         count=0;
- 	//xx := &shared.Args{1, 2} 
+ 	xx := &shared.Args{1, 2} 
 	err := stub.PutState("hello_world", []byte(args[0]))
-       // fmt.Println( xx.A )
+        fmt.Println( xx.A )
 
 	if err != nil {
 		return nil, err
