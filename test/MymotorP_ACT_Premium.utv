@@ -1,0 +1,15 @@
+[C:\VPMS\Generali\Motor Example\Mymotor.VPM
+" Starting Tests on C:\VPMS\Generali\Motor Example\Mymotor.VPM
+
+" Test P_ACT_Premium
+!
+!A_MCI_Type=EMX4
+!A_Class=VPMAC
+!A_Capacity=2001
+!A_Vehicle_Year=2000
+!A_SI=300000
+!A_Make=BLJ01
+?P_ACT_Premium=1876.2542568
+
+]
+" Tests done.
