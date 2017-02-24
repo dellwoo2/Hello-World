@@ -24,7 +24,7 @@ import (
         "time"
 //	"strconv"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"github.com/dellwoo2/Hello-World/shared"
+//	"github.com/dellwoo2/Hello-World/shared"
  	"net/http" 
 )	
 // SimpleChaincode example simple Chaincode implementation
@@ -46,14 +46,13 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 		return nil, errors.New("Incorrect number of arguments. Expecting 1")
 	}
         count=0;
- 	xx := &shared.Args{1, 2} 
-	//err := stub.PutState("hello_world", x.A)
-        fmt.Println( xx.A )
-/*
+ 	//xx := &shared.Args{1, 2} 
+	err := stub.PutState("hello_world", args[0])
+       // fmt.Println( xx.A )
+
 	if err != nil {
 		return nil, err
 	}
-*/
 	return nil, nil
 }
 
