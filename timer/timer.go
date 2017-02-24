@@ -23,8 +23,8 @@ import (
         "time"
 	"strconv"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
-)
-
+	"github.com/dellwoo2/Hello-World/shared
+)	
 // SimpleChaincode example simple Chaincode implementation
 type SimpleChaincode struct {
 }
@@ -44,7 +44,8 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 		return nil, errors.New("Incorrect number of arguments. Expecting 1")
 	}
         count=0;
-	err := stub.PutState("hello_world", []byte(args[0]))
+ 	xx := &shared.Args{1, 2} 
+	err := stub.PutState("hello_world", []byte(xx.A))
 	if err != nil {
 		return nil, err
 	}
