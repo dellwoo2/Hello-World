@@ -47,10 +47,11 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
  	xx := &shared.Args{1, 2} 
 	//err := stub.PutState("hello_world", x.A)
         fmt.Println( xx.A )
+/*
 	if err != nil {
 		return nil, err
 	}
-
+*/
 	return nil, nil
 }
 
