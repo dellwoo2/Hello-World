@@ -123,7 +123,8 @@ func (t *SimpleChaincode) read(stub shim.ChaincodeStubInterface, args []string) 
 //        str1:=strconv.FormatInt(x,10)
 //	valAsbytes:=[]byte(str1)
 	resp, _ := http.Get("http://www.bbc.com")
-  	valAsbytes, _ := ioutil.ReadAll(resp.Body)
+  	bb, _ := ioutil.ReadAll(resp.Body)
+	valAsbytes:=bb[0:50]
 	//if err != nil {
 	//	jsonResp = "{\"Error\":\"Failed to get state for " + key + "\"}"
 	//	return nil, errors.New(jsonResp)
