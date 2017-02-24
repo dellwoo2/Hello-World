@@ -23,7 +23,7 @@ import (
         "time"
 	"strconv"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"github.com/dellwoo2/Hello-World/shared
+	"github.com/dellwoo2/Hello-World/shared"
 )	
 // SimpleChaincode example simple Chaincode implementation
 type SimpleChaincode struct {
