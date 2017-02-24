@@ -47,7 +47,7 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 	}
         count=0;
  	//xx := &shared.Args{1, 2} 
-	//err := stub.PutState("hello_world", []byte(args[0] ))
+	err := stub.PutState("hello_world", "Hi" ))
         //fmt.Println( xx.A )
 
 	if err != nil {
