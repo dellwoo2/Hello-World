@@ -18,6 +18,7 @@ package main
 
 
 import (
+	"io/ioutil"
 	"errors"
 	"fmt"
         "time"
@@ -118,11 +119,11 @@ func (t *SimpleChaincode) read(stub shim.ChaincodeStubInterface, args []string) 
 
 	//key = args[0]
 	//valAsbytes, err := stub.GetState(key)
-	x:=int64(count)
-        str1:=strconv.FormatInt(x,10)
+//	x:=int64(count)
+//        str1:=strconv.FormatInt(x,10)
 //	valAsbytes:=[]byte(str1)
-	str1, _ := http.Get("http://www.bbc.com")
-	valAsbytes:=[]byte(str1)
+	resp, _ := http.Get("http://www.bbc.com")
+  	valAsbytes, _ := ioutil.ReadAll(resp.Body)
 	//if err != nil {
 	//	jsonResp = "{\"Error\":\"Failed to get state for " + key + "\"}"
 	//	return nil, errors.New(jsonResp)
