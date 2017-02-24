@@ -114,7 +114,7 @@ func (t *SimpleChaincode) read(stub shim.ChaincodeStubInterface, args []string) 
 
 	//key = args[0]
 	//valAsbytes, err := stub.GetState(key)
-        str1, err:=strconv.ParseInt(count, 10, 64)
+        str1, err:=strconv.FormatInt(count, 10, 64)
 	valAsbytes:=[]byte(str1)
 	//if err != nil {
 	//	jsonResp = "{\"Error\":\"Failed to get state for " + key + "\"}"
