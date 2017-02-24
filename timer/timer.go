@@ -32,7 +32,7 @@ type SimpleChaincode struct {
 }
 
 var count int
-
+var   xx = shared.Args{1, 2}
 func main() {
 	err := shim.Start(new(SimpleChaincode))
 	if err != nil {
@@ -46,7 +46,7 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 		return nil, errors.New("Incorrect number of arguments. Expecting 1")
 	}
         count=0;
- 	//xx := &shared.Args{1, 2} 
+ 	//xx = &shared.Args{1, 2} 
 	err := stub.PutState("hello_world", []byte("Hi") )
         //fmt.Println( xx.A )
 
@@ -59,7 +59,7 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 // Invoke isur entry point to invoke a chaincode function
 func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 	fmt.Println("invoke is running " + function)
-
+        //xx = shared.Args{1, 2} 
 	// Handle different functions
 	if function == "init" {
 		return t.Init(stub, "init", args)
