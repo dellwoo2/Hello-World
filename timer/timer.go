@@ -95,6 +95,8 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
 
 	key = args[0] //rename for funsies
 	value = args[1]
+	xx = shared.Args{1, 2} 
+	fmt.Println(xx.A)
 	err = stub.PutState(key, []byte(value)) //write the variable into the chaincode state
 	if err != nil {
 		return nil, err
@@ -104,7 +106,7 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
 		time.Sleep(time.Second * 5)
 		count++
 	}
-	return nil, nil
+	return  []byte(value), nil
 }
 
 // read - query function to read key/value pair
