@@ -24,7 +24,7 @@ import (
         "time"
 //	"strconv"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"shared"
+	"github.com/dellwoo2/Hello-World/shared"
  	"net/http" 
 )	
 // SimpleChaincode example simple Chaincode implementation
@@ -96,6 +96,7 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
 	key = args[0] //rename for funsies
 	value = args[1]
 	xx = shared.Args{1, 2} 
+	fmt.Println("Writing in Invoke DE********************")
 	fmt.Println(xx.A)
 	err = stub.PutState(key, []byte(value)) //write the variable into the chaincode state
 	if err != nil {
