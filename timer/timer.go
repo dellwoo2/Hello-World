@@ -85,8 +85,8 @@ func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
 
 // write - invoke function to write key/value pair
 func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
-	//var key, value string
-	//var err error
+	var key, value string
+	var err error
 	fmt.Println("running write()")
         /*
 	if len(args) != 2 {
